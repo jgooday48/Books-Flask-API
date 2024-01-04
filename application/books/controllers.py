@@ -29,7 +29,7 @@ def create():
     except:
         raise exceptions.BadRequest(f"error")
 
-def update():
+def update(id):
     data = request.json
     book = Book.query.filter_by(id=id).first()
 
@@ -40,7 +40,7 @@ def update():
     return jsonify({ "data":book.json})
 
 
-def destroy():
+def destroy(id):
     book = Book.query.filter_by(id=id).first()
     db.session.delete(book)
     db.session.commit()
