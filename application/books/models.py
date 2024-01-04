@@ -23,3 +23,25 @@ class Book(db.Model):
             "title": self.title,
             "author": self.author,
         }
+
+class Author(db.Model):
+    __tablename__ = "authors"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    alive = db.Column(db.Boolean, default=True)
+
+    def __init__(self, name, alive):
+        self.name = name
+        self.alive = alive
+
+    def __repr__(self):
+        return f"Book(id: {self.id}, title: {self.name})"
+    
+    @property
+    def json(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "alive": self.alive,
+        }
