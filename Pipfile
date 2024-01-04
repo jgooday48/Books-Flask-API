@@ -11,6 +11,13 @@ flask-sqlalchemy = "*"
 psycopg2-binary = "*"
 
 [dev-packages]
+pytest = "*"
+pytest-cov = "*"
+pytest-watch = "*"
 
 [requires]
 python_version = "3.11"
+
+[scripts]
+test = "ptw -- -v -rP"
+coverage = "pytest --cov=more_stuff --cov-report term-missing"
