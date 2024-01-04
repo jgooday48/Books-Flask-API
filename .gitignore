@@ -1,3 +1,5 @@
 .env
-pychache/
+__pycache__/
 Pipfile.lock
+.DS_Store
+venv/
