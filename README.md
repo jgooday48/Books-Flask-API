@@ -1,6 +1,6 @@
 # Books-Flask-API
 
-## Instructions
+## Instructions for Installation
 - In the console run `pipenv shell`
 - Run `pipenv install` to install the required modules
 - `touch .env` to add a database instance

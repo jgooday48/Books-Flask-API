@@ -1,6 +1,7 @@
 from flask import jsonify, request
 from werkzeug import exceptions
-from .models import Book, Author
+from .models import Book
+
 from .. import db
 
 def index(): #show all books
