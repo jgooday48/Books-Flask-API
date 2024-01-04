@@ -2,12 +2,12 @@ from application import db, app
 
 app.app_context().push()
 
-class Book(db.model):
+class Book(db.Model):
     __tablename__ = "books"
 
-    id = db.Column(db.integer, primary_key=True)
-    title = db.Column(db.string(100), nullable=False)
-    author = db.Column(db.string(100), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    author = db.Column(db.String(100), nullable=False)
 
     def __init__(self, title, author):
         self.title = title
