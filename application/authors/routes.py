@@ -1,7 +1,7 @@
 from flask import request
 from werkzeug import exceptions
 from application import app # app from __init__.
-from .controllers_author import index, create, show, update, destroy
+from .controllers import index, create, show, update, destroy
 
 
 @app.route('/authors', methods=["GET", "POST"])
