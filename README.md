@@ -10,7 +10,8 @@
 FLASK_DEBUG=1
 SQLALCHEMY_DATABASE_URI=
 ```
-- in the elephant sql URI, where it says `postgres`, add `ql` to it so that it now becomes `postgresql`
-- make sure that your interpreter is selected as a pipenv one related to your file
+- Add your SQL instance URL 
+- In the elephant sql URI, where it says `postgres`, add `ql` to it so that it now becomes `postgresql`
+- Make sure that your interpreter is selected as a pipenv one related to your file
 - Run `python seed.py` to seed the db instance
-- Run `python app.py` to start the api
+- Run `pipenv run dev` to start the api
