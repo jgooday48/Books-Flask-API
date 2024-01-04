@@ -1,5 +1,6 @@
 from application import db
-from application.books.models import Book, Author
+from application.books.models import Book
+from application.authors.models import Author
 
 db.drop_all()
 print("Dropping Database")
@@ -20,13 +21,17 @@ print("Seeding Database")
 
 # db.session.commit()
 
-author = Author(name="J.K. Rowling")
+author1 = Author(name="J.K. Rowling")
+author2 = Author(name="J.R.R. Tolkein")
+author3 = Author(name="Bret Easton Ellis")
 
-db.session.add(author)
+db.session.add_all([author1, author2, author3])
 db.session.commit()
 
 # Creating a book with a foreign key reference to the author
-book1 = Book(title="Harry Potter and the Philosopher's Stone", author_id=author.id)
-book2 = Book(title="Harry Potter and the Chamber of Secrets", author_id=author.id)
-db.session.add_all([book1, book2])
+book1 = Book(title="Harry Potter and the Philosopher's Stone", author_id=author1.id)
+book2 = Book(title="Harry Potter and the Chamber of Secrets", author_id=author1.id)
+book3 = Book(title="The Hobbit", author_id=author2.id)
+book4 = Book(title="The Rules of Atrraction", author_id=author3.id)
+db.session.add_all([book1, book2,book3,book4])
 db.session.commit()
