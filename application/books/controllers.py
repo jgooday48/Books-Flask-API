@@ -1,6 +1,6 @@
 from flask import jsonify, request
 from werkzeug import exceptions
-from .models import Book
+from .models import Book, Author
 from .. import db
 
 def index(): #show all books
@@ -20,9 +20,9 @@ def show(id):
     
 def create():
     try:
-        title, author = request.json.values()
+        title, author_id = request.json.values()
 
-        new_book = Book(title, author)
+        new_book = Book(title, author_id)
         db.session.add(new_book)
         db.session.commit()
         return jsonify({ "data": new_book.json}), 201
