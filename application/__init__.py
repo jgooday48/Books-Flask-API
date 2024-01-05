@@ -4,13 +4,28 @@ from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
 
-app = Flask(__name__) # initialise flask
-app.json_provider_class.sort_keys = False # orders keys as the programmer has specified
+db = SQLAlchemy() # initialise db
 
-CORS(app)
+def create_app(env=None):
+    load_dotenv()
+    app = Flask(__name__)
+    app.json_provider_class.sort_keys = False
+    CORS(app)
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["SQLALCHEMY_DATABASE_URI"]
+    
+    db.init_app(app)
+    app.app_context().push()
 
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["SQLALCHEMY_DATABASE_URI"] # configure db
+    #import blueprints
+    from application.routes import main
+    app.register_blueprint(main)
 
-db = SQLAlchemy(app)
+    from application.authors.routes import authors
+    app.register_blueprint(authors)
+
+    from application.books.routes import books
+    app.register_blueprint(books)
+
+    return app
+

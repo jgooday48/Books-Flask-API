@@ -33,5 +33,6 @@ book1 = Book(title="Harry Potter and the Philosopher's Stone", author_id=author1
 book2 = Book(title="Harry Potter and the Chamber of Secrets", author_id=author1.id)
 book3 = Book(title="The Hobbit", author_id=author2.id)
 book4 = Book(title="The Rules of Atrraction", author_id=author3.id)
-db.session.add_all([book1, book2,book3,book4])
+book5 = Book(title="Less Than Zero", author_id=author3.id)
+db.session.add_all([book1, book2,book3,book4, book5])
 db.session.commit()

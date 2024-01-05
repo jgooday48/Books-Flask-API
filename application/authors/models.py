@@ -1,5 +1,4 @@
-from application import db, app
-app.app_context().push()
+from application import db
 
 class Author(db.Model):
     __tablename__ = "authors"
