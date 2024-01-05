@@ -18,7 +18,7 @@ def test_author_page_not_found(client):
     err_response = client.get('/authors/68')
     assert err_response.status_code == 404
 
- # POST authors
+ # POST /authors
 def test_create_author(client):
     data = {
         "name": "New Author"
@@ -36,7 +36,7 @@ def test_create_author_error(client):
     response = client.post('/authors', json=data)
     assert response.status_code == 400
 
-# PATCH authors
+#PATCH /authors/:id
 def test_update_author(client):
     data = {
         "name": "Updated Author"

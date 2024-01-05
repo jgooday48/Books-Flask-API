@@ -24,7 +24,7 @@ def test_book_page_not_found(client):
     assert err_response.status_code == 404
 
 
-# POST books
+# POST /books
 def test_create_book(client):
     data = {
         "title": "New Book",

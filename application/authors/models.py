@@ -5,7 +5,7 @@ class Author(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-    alive = db.Column(db.Boolean, default=True)  # assuming an "alive" attribute
+    alive = db.Column(db.Boolean, default=True)  
 
     books = db.relationship('Book', backref='author', lazy=True)
 
