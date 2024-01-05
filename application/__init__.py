@@ -10,8 +10,10 @@ db = SQLAlchemy() # initialise db
 def create_app(env=None):
     load_dotenv()
     app = Flask(__name__)
+
     app.json_provider_class.sort_keys = False
     CORS(app)
+    
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["SQLALCHEMY_DATABASE_URI"]
     
     db.init_app(app)
