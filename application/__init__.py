@@ -13,11 +13,10 @@ def create_app(env=None):
 
     app.json_provider_class.sort_keys = False
     CORS(app)
-    
+
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["SQLALCHEMY_DATABASE_URI"]
     
     db.init_app(app)
-    app.app_context().push()
 
     #import blueprints
     from application.routes import main
