@@ -13,8 +13,16 @@ def create_app(env=None):
 
     app.json_provider_class.sort_keys = False
     CORS(app)
+    if env == 'TEST':
+        app.config['TESTING'] = True
+        app.config['DEBUG'] = False
+        app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite://"
+    else:
+        app.config['TESTING'] = False
+        app.config['DEBUG'] = True
+        app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["SQLALCHEMY_DATABASE_URI"]
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["SQLALCHEMY_DATABASE_URI"]
+    # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["SQLALCHEMY_DATABASE_URI"]
     
     db.init_app(app)
 
