@@ -8,8 +8,8 @@ def test_new_book():
 
     assert new_book.json == {
         "id": new_book.id,
-        "title": new_book.title,
         "author_id": new_book.author_id,
+        "title": new_book.title,
     }
 
 def test_new_author():

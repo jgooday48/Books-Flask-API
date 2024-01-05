@@ -21,9 +21,9 @@ def show(id):
     
 def create():
     try:
-        title, author_id = request.json.values()
+        title, author_id, genre = request.json.values()
 
-        new_book = Book(title, author_id)
+        new_book = Book(title, author_id, genre)
         db.session.add(new_book)
         db.session.commit()
         return jsonify({ "data": new_book.json}), 201

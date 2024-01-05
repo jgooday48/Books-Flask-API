@@ -7,10 +7,12 @@ class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     author_id = db.Column(db.Integer, db.ForeignKey('authors.id'), nullable=False)
+    genre = db.Column(db.String(100), nullable=False)
 
-    def __init__(self, title, author_id):
+    def __init__(self, title, author_id, genre):
         self.title = title
         self.author_id = author_id
+        self.genre = genre
 
     def __repr__(self):
         return f"Book(id: {self.id}, title: {self.title}, author_id: {self.author_id})"
@@ -19,8 +21,9 @@ class Book(db.Model):
     def json(self):
         return {
             "id": self.id,
-            "title": self.title,
             "author_id": self.author_id,
+            "title": self.title,
+            "genre": self.genre
         }
     
 # class Author(db.Model):
