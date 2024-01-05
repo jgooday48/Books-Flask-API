@@ -2,7 +2,7 @@ from application.books.models import Book
 from application.authors.models import Author
 def test_new_book():
 
-    new_book = Book(title="Less than Zero", author_id=1)
+    new_book = Book(title="Less than Zero", author_id=1, genre="literary fiction")
     assert new_book.title == 'Less than Zero'
 
 
@@ -10,6 +10,7 @@ def test_new_book():
         "id": new_book.id,
         "author_id": new_book.author_id,
         "title": new_book.title,
+        "genre": new_book.genre
     }
 
 def test_new_author():
