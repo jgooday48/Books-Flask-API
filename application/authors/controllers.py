@@ -42,9 +42,9 @@ def update(id):
     return jsonify({ "data":author.json})
 
 
-def destroy(id):
-    author = Author.query.filter_by(id=id).first()
-    db.session.delete(author)
-    db.session.commit()
-    return "author deleted", 204
+# def destroy(id):
+#     author = Author.query.filter_by(id=id).first()
+#     db.session.delete(author)
+#     db.session.commit()
+#     return "author deleted", 204
     

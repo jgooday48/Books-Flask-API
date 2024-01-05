@@ -1,6 +1,6 @@
 from flask import request, Blueprint
 from werkzeug import exceptions
-from .controllers import index, create, show, update, destroy
+from .controllers import index, create, show, update #, destroy
 
 authors = Blueprint("authors", __name__)
 
@@ -14,7 +14,7 @@ def handle_authors():
 def handle_author(id):
     if request.method == "GET": return show(id)
     if request.method == "PATCH": return update(id)
-    if request.method == "DELETE": return destroy(id)
+    #if request.method == "DELETE": return destroy(id)
 
 
 @authors.errorhandler(exceptions.NotFound)

@@ -18,4 +18,29 @@ def test_author_page(client):
     assert data['id'] == 1
 
 
+def test_create_author(client):
+    data = {
+        "name": "New Author"
+    }
+    response = client.post('/authors', json=data)
+    assert response.status_code == 201
+    created_data = json.loads(response.data)
+    assert "data" in created_data
 
+
+
+def test_create_author_error(client):
+    data = {
+        "title": "New author"
+    }
+    response = client.post('/authors', json=data)
+    assert response.status_code == 400
+
+def test_update_author(client):
+    data = {
+        "name": "Updated Author"
+    }
+    response = client.patch('/authors/1', json=data)
+    assert response.status_code == 200
+    updated_data = json.loads(response.data)
+    assert "data" in updated_data
