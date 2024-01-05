@@ -17,8 +17,9 @@ print("Seeding Database")
 author1 = Author(name="J.K. Rowling")
 author2 = Author(name="J.R.R. Tolkein")
 author3 = Author(name="Bret Easton Ellis")
+author4 = Author(name="Jeff Kinney")
 
-db.session.add_all([author1, author2, author3])
+db.session.add_all([author1, author2, author3, author4])
 db.session.commit()
 
 # Creating a book with a foreign key reference to the author
@@ -34,5 +35,7 @@ book9 = Book(title="Harry Potter and the Goblet of Fire", author_id=author1.id, 
 book10 = Book(title="Harry Potter and the Order of the Phoneix", author_id=author1.id, genre="fantasy")
 book11 = Book(title="Harry Potter and the Half Blood Prince", author_id=author1.id, genre="fantasy")
 book12 = Book(title="Harry Potter and the Deathly Hallows", author_id=author1.id, genre="fantasy")
-db.session.add_all([book1, book2, book3, book4, book5, book6, book7, book8, book9, book10, book11, book12])
+book13 = Book(title="Diary of a Wimpy Kid", author_id=author4.id, genre="comedy")
+book14 = Book(title="Diary of a Wimpy Kid: Roderick Rules", author_id=author4.id, genre="comedy")
+db.session.add_all([book1, book2, book3, book4, book5, book6, book7, book8, book9, book10, book11, book12, book13, book14])
 db.session.commit()
