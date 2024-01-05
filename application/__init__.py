@@ -22,7 +22,6 @@ def create_app(env=None):
         app.config['DEBUG'] = True
         app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["SQLALCHEMY_DATABASE_URI"]
 
-    # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["SQLALCHEMY_DATABASE_URI"]
     
     db.init_app(app)
 

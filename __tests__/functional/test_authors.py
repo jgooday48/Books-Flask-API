@@ -1,5 +1,4 @@
 import json
-
     
 # GET /books
 def test_authors_page(client):
@@ -10,14 +9,16 @@ def test_authors_page(client):
 # GET/:id authors
 def test_author_page(client):
     response = client.get('/authors/1')
-    err_response = client.get('/authors/68')
-    assert err_response.status_code == 404
     assert response.status_code == 200
     
     data = json.loads(response.data)["data"]
     assert data['id'] == 1
 
+def test_author_page_not_found(client):
+    err_response = client.get('/authors/68')
+    assert err_response.status_code == 404
 
+ # POST authors
 def test_create_author(client):
     data = {
         "name": "New Author"
@@ -28,7 +29,6 @@ def test_create_author(client):
     assert "data" in created_data
 
 
-
 def test_create_author_error(client):
     data = {
         "title": "New author"
@@ -36,6 +36,7 @@ def test_create_author_error(client):
     response = client.post('/authors', json=data)
     assert response.status_code == 400
 
+# PATCH authors
 def test_update_author(client):
     data = {
         "name": "Updated Author"
